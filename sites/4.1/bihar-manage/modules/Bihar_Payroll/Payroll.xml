@@ -9,7 +9,7 @@
     <creator>Intrahealth Informatics</creator>
     <email>hris@capacityplus.org</email>
     <link>https://launchpad.net/indian-ihris</link>
-    <version>4.1.12.18</version>
+    <version>4.1.12.31</version>
     <path name="configs">
       <value>./configs</value>
     </path>
@@ -67,6 +67,7 @@
       </configuration>
     </configurationGroup>
     <configurationGroup name="tasks" path="/I2CE/tasks/task_description" locale="en_US">
+      <version>4.1.12.21</version>
       <configuration name="can_set_employee_monthly_salary" locale="en_US">
         <value>Can set employee monthly salary</value>
       </configuration>
@@ -81,6 +82,12 @@
       </configuration>
       <configuration name="person_can_edit_child_form_person_position_salarybreakdown" locale="en_US">
         <value>Can edit person_position_salarybreakdown child forms of a person</value>
+      </configuration>
+      <configuration name="can_edit_database_list_annual_increment" locale="en_US">
+        <value>Can edit the annual increment database list</value>
+      </configuration>
+      <configuration name="can_view_database_list_annual_increment" locale="en_US">
+        <value>Can view the annual increment database list</value>
       </configuration>
 
       <configuration name="can_edit_database_list_working_days" locale="en_US">
@@ -100,16 +107,27 @@
 
     </configurationGroup>
     <configurationGroup name="tasks_trickle_down" path="/I2CE/tasks/task_trickle_down/">
+      <version>4.1.12.20</version>
       <configuration name="can_edit_database_list_working_days" values="many">
         <value>can_edit_all_employee_database_lists</value>
         <value>can_view_database_list_working_days</value>
       </configuration>
+      <configuration name="can_edit_database_list_annual_increment" values="many">
+        <value>can_edit_all_employee_database_lists</value>
+        <value>can_view_database_list_annual_increment</value>
+      </configuration>
       <configuration name="can_view_employee_database_lists" values="many">
         <value>can_view_database_list_working_days</value>
       </configuration>
+      <configuration name="can_view_employee_database_lists" values="many">
+        <value>can_view_database_list_annual_increment</value>
+      </configuration>
       <configuration name="can_edit_employee_database_lists" values="many">
         <value>can_edit_database_list_working_days</value>
-      </configuration>	  
+      </configuration>
+      <configuration name="can_edit_employee_database_lists" values="many">
+        <value>can_edit_database_list_annual_increment</value>
+      </configuration>
       <configuration name="can_view_employee_database_lists" values="many">
         <version>4.1.12.12</version>
         <value>can_view_database_list_bankname</value>
@@ -382,6 +400,28 @@
             <value>magicdata</value>
           </configuration>
         </configurationGroup>
+
+        <configurationGroup name="annual_increment">
+          <version>4.1.12.19</version>
+          <displayName>Annual default increment percentage</displayName>
+          <description>The Annual increment Information Form</description>
+          <configuration name="class" values="single">
+            <displayName>Class Name</displayName>
+            <description>The name of the class providing the form</description>
+            <value>iHRIS_Bihar_AnnualIncrementList</value>
+          </configuration>
+          <configuration name="display" values="single" locale="en_US">
+            <displayName>Display name</displayName>
+            <description>The display name for this form</description>
+            <value>Annual Increment Percentage</value>
+          </configuration>
+          <configuration name="storage" values="single">
+            <displayName>Display name</displayName>
+            <description>The storage mechanism for this form</description>
+            <value>magicdata</value>
+          </configuration>
+        </configurationGroup>
+
         <configurationGroup name="position_type">
           <configuration name="class" values="single">
             <value>Bihar_PositionType</value>
@@ -712,6 +752,227 @@
           </configurationGroup>
         </configurationGroup>
 
+        <configurationGroup name="iHRIS_Bihar_AnnualIncrementList">
+          <version>4.1.12.28</version>
+          <displayName>Configuration for the class 'iHRIS_Bihar_AnnualIncrementList'</displayName>
+          <configuration name="extends">
+            <displayName>The class this form extends</displayName>
+            <value>I2CE_List</value>
+          </configuration>
+          <configurationGroup name="meta" path="meta/list/default">
+            <configuration name="display_string">
+              <value>%s - %s percentage</value>
+            </configuration>
+            <configuration name="display_args" type="delimited" values="many">
+              <value>0:year</value>
+              <value>1:percentage</value>
+            </configuration>
+            <configuration name="sort_fields" type="delimited" values="many">
+              <value>0:year</value>
+              <value>1:percentage</value>
+            </configuration>
+          </configurationGroup>
+          <configurationGroup name="fields">
+            <displayName>The fields defined for this form</displayName>
+            <configurationGroup name="percentage">
+              <displayName>The field 'percentage'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <value>INT</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Percentage of Annual Increment</value>
+              </configuration>
+              <configuration name="required" type="boolean">
+                <value>true</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="year">
+              <displayName>The field 'setup_date'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <value>DATE_Y</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Year</value>
+              </configuration>
+              <configuration name="default_eval">
+                <displayName>The default value for this field as an eval string</displayName>
+                <value>I2CE_Date::now()</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="facility">
+              <displayName>The field 'facility'</displayName>
+              <version>4.1.12.22</version>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <value>MAP</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Facility (Leave Blank if not special)</value>
+              </configuration>
+              <erase path="/modules/forms/formClasses/iHRIS_Bihar_AnnualIncrementList/fields/facility/meta/limits/default/facility+facility_parent">
+                <lessThan version="4.1.12.22" />
+              </erase>
+              <erase path="/modules/forms/formClasses/iHRIS_Bihar_AnnualIncrementList/fields/facility/meta/limits/default/facility+location">
+                <lessThan version="4.1.12.22" />
+              </erase>
+              <configurationGroup name="meta">
+                <version>4.1.1.22</version>
+                <configurationGroup name="add_limit_module">
+                  <displayName>Add Limit Module</displayName>
+                  <configuration name="ManageAccessFacility">
+                    <displayName>Manage Access Facility</displayName>
+                    <value>getLimitAdd</value>
+                  </configuration>
+                </configurationGroup>
+                <configurationGroup name="display">
+                  <displayName>Display</displayName>
+                  <configurationGroup name="default">
+                    <displayName>Default</displayName>
+                    <configuration name="fields">
+                      <displayName>Fields</displayName>
+                      <value>facility+location:county:district:division:region:country</value>
+                    </configuration>
+                  </configurationGroup>
+                  <configurationGroup name="facility">
+                    <displayName>Facility</displayName>
+                    <configurationGroup name="full">
+                      <displayName>Full</displayName>
+                      <configurationGroup name="printf_args">
+                        <displayName>Printf Args</displayName>
+                        <configuration name="1">
+                          <displayName>1</displayName>
+                          <value>location</value>
+                        </configuration>
+                        <configuration name="0">
+                          <displayName>0</displayName>
+                          <value>name</value>
+                        </configuration>
+                      </configurationGroup>
+                      <configuration name="printf">
+                        <displayName>Printf</displayName>
+                        <value>%s (%s)</value>
+                      </configuration>
+                    </configurationGroup>
+                    <configurationGroup name="default">
+                      <displayName>Default</displayName>
+                      <configuration name="printf">
+                        <displayName>Printf</displayName>
+                        <value>%s (%s)</value>
+                      </configuration>
+                      <configurationGroup name="printf_args">
+                        <displayName>Printf Args</displayName>
+                        <configuration name="1">
+                          <displayName>1</displayName>
+                          <value>location</value>
+                        </configuration>
+                        <configuration name="0">
+                          <displayName>0</displayName>
+                          <value>name</value>
+                        </configuration>
+                      </configurationGroup>
+                    </configurationGroup>
+                  </configurationGroup>
+                  <configurationGroup name="reportSelect">
+                    <displayName>Report Select</displayName>
+                    <configuration name="enabled">
+                      <displayName>Enabled</displayName>
+                      <value>1</value>
+                    </configuration>
+                  </configurationGroup>
+                </configurationGroup>
+                <configurationGroup name="display_report">
+                  <displayName>Display Report</displayName>
+                  <configurationGroup name="default">
+                    <displayName>Default</displayName>
+                    <configurationGroup name="map">
+                      <displayName>Map</displayName>
+                      <configuration name="facility+facility_parent">
+                        <displayName>Facility Facility Parent</displayName>
+                        <value>facility_child</value>
+                      </configuration>
+                      <configuration name="facility+location">
+                        <displayName>Facility Location</displayName>
+                        <value>primary_form</value>
+                      </configuration>
+                    </configurationGroup>
+                    <configuration name="report">
+                      <displayName>Report</displayName>
+                      <value>facility_tree</value>
+                    </configuration>
+                  </configurationGroup>
+                </configurationGroup>
+                <configurationGroup name="form">
+                  <displayName>Form</displayName>
+                  <configuration name="0">
+                    <displayName>0</displayName>
+                    <value>facility</value>
+                  </configuration>
+                </configurationGroup>
+                <configurationGroup name="limits">
+                  <displayName>Limits</displayName>
+                  <configurationGroup name="default">
+                    <displayName>Default</displayName>
+                    <configurationGroup name="facility+facility_parent">
+                      <displayName>Facility Facility Parent</displayName>
+                      <configuration name="field">
+                        <displayName>Field</displayName>
+                        <value>facility_parent</value>
+                      </configuration>
+                      <configuration name="operator">
+                        <displayName>Operator</displayName>
+                        <value>FIELD_LIMIT</value>
+                      </configuration>
+                      <configuration name="style">
+                        <displayName>Style</displayName>
+                        <value>not_null</value>
+                      </configuration>
+                    </configurationGroup>
+                    <configurationGroup name="facility+location">
+                      <displayName>Facility Location</displayName>
+                      <configuration name="field">
+                        <displayName>Field</displayName>
+                        <value>facility_parent</value>
+                      </configuration>
+                      <configuration name="operator">
+                        <displayName>Operator</displayName>
+                        <value>FIELD_LIMIT</value>
+                      </configuration>
+                      <configuration name="style">
+                        <displayName>Style</displayName>
+                        <value>null</value>
+                      </configuration>
+                    </configurationGroup>
+                  </configurationGroup>
+                </configurationGroup>
+                <configurationGroup name="reportSelect">
+                  <displayName>Report Select</displayName>
+                  <configurationGroup name="default">
+                    <displayName>Default</displayName>
+                    <configuration name="reportView">
+                      <displayName>Report View</displayName>
+                      <value>facility_selector_limited</value>
+                    </configuration>
+                  </configurationGroup>
+                  <configurationGroup name="full">
+                    <displayName>Full</displayName>
+                    <configuration name="reportView">
+                      <displayName>Report View</displayName>
+                      <value>facility_selector_full</value>
+                    </configuration>
+                  </configurationGroup>
+                </configurationGroup>
+              </configurationGroup>
+
+            </configurationGroup>
+          </configurationGroup>
+        </configurationGroup>
+
+
         <configurationGroup name="iHRIS_Bihar_SalaryBreakdown">
           <displayName>Configuration for the class 'iHRIS_Bihar_SalaryBreakdown'</displayName>
           <configuration name="extends">
@@ -794,6 +1055,18 @@
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
                 <value>default:IFSC Code</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="branch_code">
+              <version>4.1.12.29</version>
+              <displayName>The field 'branch_code'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <value>STRING_LINE</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Branch Code Number</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="pannumber">
@@ -972,7 +1245,7 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Grade Pay*</value>
+                <value>default:Special Pay/ Grade Pay*</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="hra">
@@ -998,6 +1271,7 @@
               </configuration>
             </configurationGroup>
             <configurationGroup name="deputation_allowance">
+
               <displayName>The field 'deputation_allowance'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1006,6 +1280,18 @@
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
                 <value>default:Deputation Allowance*</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="dearness_allowance">
+              <version>4.1.12.30</version>
+              <displayName>The field 'dearness_allowance'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <value>INT</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Dearness Allowance*</value>
               </configuration>
             </configurationGroup>
             <!-- additions for regular staff -->
@@ -1086,6 +1372,160 @@
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
                 <value>default:Leave Days</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="transport_allowance">
+              <displayName>The field 'transport_allowance'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <version>4.1.12.31</version>
+                <value>INT</value>
+              </configuration>
+              <configuration name="default_value">
+                <value>0</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Transport Allowance</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="other_allowance">
+              <displayName>The field 'other_allowance'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <version>4.1.12.31</version>
+                <value>INT</value>
+              </configuration>
+              <configuration name="default_value">
+                <value>0</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Other Allowances</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="house_rent_deduction">
+              <displayName>The field 'house_rent_deduction'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <version>4.1.12.31</version>
+                <value>INT</value>
+              </configuration>
+              <configuration name="default_value">
+                <value>0</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:House Rent Deduction</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="interest_advance_deduction">
+              <displayName>The field 'interest_advance_deduction'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <version>4.1.12.31</version>
+                <value>INT</value>
+              </configuration>
+              <configuration name="default_value">
+                <value>0</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Interest on Advance Deduction</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="gpf_advance_deduction">
+              <displayName>The field 'gpf_advance_deduction'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <version>4.1.12.31</version>
+                <value>INT</value>
+              </configuration>
+              <configuration name="default_value">
+                <value>0</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:G.P.F Advance Deduction</value>
+              </configuration>
+            </configurationGroup>
+
+
+
+
+            <configurationGroup name="house_building_advance_deduction">
+              <displayName>The field 'house_building_advance_deduction'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <version>4.1.12.31</version>
+                <value>INT</value>
+              </configuration>
+              <configuration name="default_value">
+                <value>0</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:House Building Advance Deduction</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="service_tax_deduction">
+              <displayName>The field 'service_tax_deduction'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <version>4.1.12.31</version>
+                <value>INT</value>
+              </configuration>
+              <configuration name="default_value">
+                <value>0</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Service Tax Deduction</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="computer_advance_deduction">
+              <displayName>The field 'computer_advance_deduction'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <version>4.1.12.31</version>
+                <value>INT</value>
+              </configuration>
+              <configuration name="default_value">
+                <value>0</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Computer Advance Deduction</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="festival_advance_deduction">
+              <displayName>The field 'festival_advance_deduction'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <version>4.1.12.31</version>
+                <value>INT</value>
+              </configuration>
+              <configuration name="default_value">
+                <value>0</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Festival Advance Deduction</value>
+              </configuration>
+            </configurationGroup>
+            <configurationGroup name="misc_recoveries_deduction">
+              <displayName>The field 'misc_recoveries_deduction'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <version>4.1.12.31</version>
+                <value>INT</value>
+              </configuration>
+              <configuration name="default_value">
+                <value>0</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:Miscellaneous Recovery</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="month">
