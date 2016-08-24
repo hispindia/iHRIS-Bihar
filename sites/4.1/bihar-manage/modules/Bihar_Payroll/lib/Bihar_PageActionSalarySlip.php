@@ -159,7 +159,7 @@ class Bihar_PageActionSalarySlip extends I2CE_PageGenerateRelationshipTemplate {
             }
             $odf->setVars( "++leave_amount", $leave_amount, $this->encoding, $this->charset );
         } catch( OdfException $e ) {
-            // It's ok if it's not ther eso don't do anything.
+            // It's ok if it's not there so don't do anything.
         }
 
         return $retVal;
