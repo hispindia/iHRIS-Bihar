@@ -1,37 +1,37 @@
 <?php
 /*
  * © Copyright 2007, 2008 IntraHealth International, Inc.
- * 
+ *
  * This File is part of iHRIS
- * 
+ *
  * iHRIS is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 /**
  * Manage editing person position departure in the database.
- * 
+ *
  * @package iHRIS
  * @subpackage Manage
  * @access public
  * @author Luke Duncan <lduncan@intrahealth.org>
- * @copyright Copyright &copy; 2007, 2008 IntraHealth International, Inc. 
+ * @copyright Copyright &copy; 2007, 2008 IntraHealth International, Inc.
  * @since v2.0.0
  * @version v2.0.0
  */
 
 /**
  * Page object to handle the editing of person position departure in the database.
- * 
+ *
  * @package iHRIS
  * @subpackage Manage
  * @access public
@@ -46,7 +46,7 @@ class iHRIS_Module_Payroll extends I2CE_Module  {
             'iHRIS_Person->getLastMonthlySalary' => 'getLastMonthlySalary'
             );
     }
-    
+
     /**
      * Return the array of hooks available in this module.
      * @return array
@@ -91,13 +91,13 @@ class iHRIS_Module_Payroll extends I2CE_Module  {
 			$formfield->setInvalidMessage('invalid_pan_structure');
 		}
 	}
-	
+
     protected $contractual_position_type = 'position_type|2'; //there is a need to set this automatically
     protected $regular_position_type = 'position_type|1'; //there is a need to set this automatically
-    
+
     /**
      * Return the most recent monthly salary this person was paid
-     * 
+     *
      * @return I2CE_Form or null
      */
     public function getLastMonthlySalary($person) {
@@ -123,7 +123,7 @@ class iHRIS_Module_Payroll extends I2CE_Module  {
 
     /**
      * Return the most recent monthly salary this person was paid
-     * 
+     *
      * @return I2CE_Form or null
      */
     public function getLastSalaryBreakdown($person) {
@@ -147,7 +147,7 @@ class iHRIS_Module_Payroll extends I2CE_Module  {
         return $salary_breakdown;
     }
 
-    
+
     public function action_person_position_salarybreakdown($page) {
         if (!$page instanceof iHRIS_PageView) {
             return false;
@@ -168,7 +168,7 @@ class iHRIS_Module_Payroll extends I2CE_Module  {
 		}
         return $childNode;
     }
-    
+
     public function action_person_monthly_salary($page) {
         if (!$page instanceof iHRIS_PageView) {
             return false;
@@ -187,7 +187,7 @@ class iHRIS_Module_Payroll extends I2CE_Module  {
 		}
         return $childNode;
     }
-    
+
     public function validate_form_person_position_salarybreakdown($form){
         $float_number = '/\d+\.?d*/';
         $required_fields = array(
@@ -222,11 +222,11 @@ class iHRIS_Module_Payroll extends I2CE_Module  {
             }
         }
 
-        $gross_pay = $form->salary + $form->salaryarrear + $form->otherarrear + $form->basic_pay 
+        $gross_pay = $form->salary + $form->salaryarrear + $form->otherarrear + $form->basic_pay
             + $form->grade_pay + $form->hra + $form->medical_allowance + $form->deputation_allowance;
-        $deductions = $form->tds + $form->epf + $form->gpf + $form->professionaltax + $form->otherdeductions 
+        $deductions = $form->tds + $form->epf + $form->gpf + $form->professionaltax + $form->otherdeductions
             + $form->gi + $form->income_tax;
-        
+
         $form->gross_salary = $gross_pay;
         $form->net_salary_payable = $gross_pay - $deductions;
 

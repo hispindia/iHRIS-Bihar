@@ -70,13 +70,13 @@ class iHRIS_BiharPageSetMonthlySalary extends  I2CE_Page {
 
     public function getActionNode($field_args){
         #$fields = $this->getActionFields();
-        /*
+
                 $working_days_field = $this->template->createElement( "input",
                                                                array( "type" => "text", "name" => "work_days", "id" => "work_days" ) );
                 $js_work_days = "isNumeric(this, '".$field_args[0]."', '".$field_args[1]."', '".$field_args[2]."');";
                 $this->template->setDisplayData('work_days', $field_args[3], $working_days_field);
                 $working_days_field->setAttribute('onchange',$js_work_days);
-                */
+
         $leave_days_field = $this->template->createElement( "input",
             array( "type" => "text", "name" => "leave_days", "id" => "leave_days" ) );
         $js_leave_days = "isNumeric(this, '".$field_args[0]."', '".$field_args[1]."', '".$field_args[2]."');";
@@ -94,49 +94,49 @@ class iHRIS_BiharPageSetMonthlySalary extends  I2CE_Page {
         $other_allowance_field = $this->template->createElement( "input",
             array( "type" => "text", "name" => "other_allowance", "id" => "other_allowance" ) );
         $js_other_allowance= "isNumeric(this, '".$field_args[0]."', '".$field_args[1]."', '".$field_args[2]."');";
-        $this->template->setDisplayData('other_allowance', $field_args[4], $leave_days_field);
+        $this->template->setDisplayData('other_allowance', $field_args[4], $other_allowance_field);
         $other_allowance_field->setAttribute('onchange',$js_other_allowance);
 
         $house_rent_deduction_field = $this->template->createElement( "input",
             array( "type" => "text", "name" => "house_rent_deduction", "id" => "house_rent_deduction" ) );
         $js_house_rent_deduction= "isNumeric(this, '".$field_args[0]."', '".$field_args[1]."', '".$field_args[2]."');";
-        $this->template->setDisplayData('house_rent_deduction', $field_args[4], $leave_days_field);
+        $this->template->setDisplayData('house_rent_deduction', $field_args[4], $house_rent_deduction_field);
         $house_rent_deduction_field->setAttribute('onchange',$js_house_rent_deduction);
 
         $interest_advance_deduction_field = $this->template->createElement( "input",
             array( "type" => "text", "name" => "interest_advance_deduction", "id" => "interest_advance_deduction" ) );
         $js_interest_advance_deduction= "isNumeric(this, '".$field_args[0]."', '".$field_args[1]."', '".$field_args[2]."');";
-        $this->template->setDisplayData('interest_advance_deduction', $field_args[4], $leave_days_field);
+        $this->template->setDisplayData('interest_advance_deduction', $field_args[4], $interest_advance_deduction_field);
         $interest_advance_deduction_field->setAttribute('onchange',$js_interest_advance_deduction);
 
         $gpf_advance_deduction_field = $this->template->createElement( "input",
             array( "type" => "text", "name" => "gpf_advance_deduction", "id" => "gpf_advance_deduction" ) );
         $js_gpf_advance_deduction= "isNumeric(this, '".$field_args[0]."', '".$field_args[1]."', '".$field_args[2]."');";
-        $this->template->setDisplayData('gpf_advance_deduction', $field_args[4], $leave_days_field);
+        $this->template->setDisplayData('gpf_advance_deduction', $field_args[4], $gpf_advance_deduction_field);
         $gpf_advance_deduction_field->setAttribute('onchange',$js_gpf_advance_deduction);
 
         $house_building_advance_deduction_field = $this->template->createElement( "input",
             array( "type" => "text", "name" => "house_building_advance_deduction", "id" => "house_building_advance_deduction" ) );
         $js_house_building_advance_deduction= "isNumeric(this, '".$field_args[0]."', '".$field_args[1]."', '".$field_args[2]."');";
-        $this->template->setDisplayData('house_building_advance_deduction', $field_args[4], $leave_days_field);
+        $this->template->setDisplayData('house_building_advance_deduction', $field_args[4], $house_building_advance_deduction_field);
         $house_building_advance_deduction_field->setAttribute('onchange',$js_house_building_advance_deduction);
 
         $service_tax_deduction_field = $this->template->createElement( "input",
             array( "type" => "text", "name" => "service_tax_deduction", "id" => "service_tax_deduction" ) );
         $js_service_tax_deduction= "isNumeric(this, '".$field_args[0]."', '".$field_args[1]."', '".$field_args[2]."');";
-        $this->template->setDisplayData('service_tax_deduction', $field_args[4], $leave_days_field);
+        $this->template->setDisplayData('service_tax_deduction', $field_args[4], $service_tax_deduction_field);
         $service_tax_deduction_field->setAttribute('onchange',$js_service_tax_deduction);
 
         $computer_advance_deduction_field = $this->template->createElement( "input",
             array( "type" => "text", "name" => "computer_advance_deduction", "id" => "computer_advance_deduction" ) );
         $js_computer_advance_deduction= "isNumeric(this, '".$field_args[0]."', '".$field_args[1]."', '".$field_args[2]."');";
-        $this->template->setDisplayData('computer_advance_deduction', $field_args[4], $leave_days_field);
+        $this->template->setDisplayData('computer_advance_deduction', $field_args[4], $computer_advance_deduction_field);
         $computer_advance_deduction_field->setAttribute('onchange',$js_computer_advance_deduction);
 
         $festival_advance_deduction_field = $this->template->createElement( "input",
             array( "type" => "text", "name" => "festival_advance_deduction", "id" => "festival_advance_deduction" ) );
         $js_festival_advance_deduction= "isNumeric(this, '".$field_args[0]."', '".$field_args[1]."', '".$field_args[2]."');";
-        $this->template->setDisplayData('festival_advance_deduction', $field_args[4], $leave_days_field);
+        $this->template->setDisplayData('festival_advance_deduction', $field_args[4], $festival_advance_deduction_field);
         $festival_advance_deduction_field->setAttribute('onchange',$js_festival_advance_deduction);
 
         //return array($working_days_field, $leave_days_field);

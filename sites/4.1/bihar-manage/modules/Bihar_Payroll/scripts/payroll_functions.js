@@ -38,7 +38,7 @@ function updateTransportAllowance(node,person_id,monthly_salary_form_id, month) 
         return;
     }
     var color = 'white';
-    var Total_Transport_allowance = node.get('value');
+    var Total_transport_allowance = node.get('value');
     if ( !update_monthly_salary[transport_allowance] ) {
         update_monthly_salary[transport_allowance] = true;
         var url = 'index.php/person_monthly_salary/';
@@ -47,15 +47,15 @@ function updateTransportAllowance(node,person_id,monthly_salary_form_id, month) 
             url: url,
             data: { 'id':monthly_salary_form_id,
                 'parent':person_id,
-                'leave_days':Total_Transport_allowance,
+                'transport_allowance':Total_transport_allowance,
                 'month':month,
-                'action':'update_Transport_allowance',
+                'action':'update_transport_allowance',
                 'submit_type':'save'
             },
             onRequest: function() { node.set('value','Saving Record'); node.setStyle('color','blue');},
             onComplete: function(response) { update_monthly_salary[transport_allowance] = false;
                 if (response.item(1).style.color != "green") {
-                    node.set('value', Total_Transport_allowance);
+                    node.set('value', Total_transport_allowance);
                     node.setStyle('color', 'green');
                 } else {
                     node.set('value','');
@@ -127,7 +127,7 @@ function updateOtherAllowance(node,person_id,monthly_salary_form_id, month) {
             url: url,
             data: { 'id':monthly_salary_form_id,
                 'parent':person_id,
-                'leave_days':Total_other_allow,
+                'other_allowance':Total_other_allow,
                 'month':month,
                 'action':'update_other_allowance',
                 'submit_type':'save'
@@ -157,24 +157,24 @@ function updateHouseRentDeduction(node,person_id,monthly_salary_form_id, month) 
         return;
     }
     var color = 'white';
-    var Total_hose_rent_deduction = node.get('value');
-    if ( !update_monthly_salary[hose_rent_deduction] ) {
-        update_monthly_salary[hose_rent_deduction] = true;
+    var Total_house_rent_deduction = node.get('value');
+    if ( !update_monthly_salary[house_rent_deduction] ) {
+        update_monthly_salary[house_rent_deduction] = true;
         var url = 'index.php/person_monthly_salary/';
         var req = new Request.HTML({
             method: 'post',
             url: url,
             data: { 'id':monthly_salary_form_id,
                 'parent':person_id,
-                'leave_days':Total_hose_rent_deduction,
+                'house_rent_deduction':Total_house_rent_deduction,
                 'month':month,
-                'action':'update_other_allowance',
+                'action':'update_house_rent_deduction',
                 'submit_type':'save'
             },
             onRequest: function() { node.set('value','Saving Record'); node.setStyle('color','blue');},
-            onComplete: function(response) { update_monthly_salary[hose_rent_deduction] = false;
+            onComplete: function(response) { update_monthly_salary[house_rent_deduction] = false;
                 if (response.item(1).style.color != "green") {
-                    node.set('value', Total_hose_rent_deduction);
+                    node.set('value', Total_house_rent_deduction);
                     node.setStyle('color', 'green');
                 } else {
                     node.set('value','');
@@ -205,9 +205,9 @@ function updateGpfAdvanceDeduction(node,person_id,monthly_salary_form_id, month)
             url: url,
             data: { 'id':monthly_salary_form_id,
                 'parent':person_id,
-                'leave_days':Total_gpf_advance_deduction,
+                'gpf_advance_deduction':Total_gpf_advance_deduction,
                 'month':month,
-                'action':'update_other_allowance',
+                'action':'update_gpf_advance_deduction',
                 'submit_type':'save'
             },
             onRequest: function() { node.set('value','Saving Record'); node.setStyle('color','blue');},
@@ -244,9 +244,9 @@ function updateHouseBuildingAdvanceDeduction(node,person_id,monthly_salary_form_
             url: url,
             data: { 'id':monthly_salary_form_id,
                 'parent':person_id,
-                'leave_days':Total_house_building_advance_deduction,
+                'house_building_advance_deduction':Total_house_building_advance_deduction,
                 'month':month,
-                'action':'update_other_allowance',
+                'action':'update_house_building_advance_deduction',
                 'submit_type':'save'
             },
             onRequest: function() { node.set('value','Saving Record'); node.setStyle('color','blue');},
@@ -274,7 +274,7 @@ function updateInterestAdvanceDeduction(node,person_id,monthly_salary_form_id, m
         return;
     }
     var color = 'white';
-    var Total_Interest_Advance_Deduction= node.get('value');
+    var Total_interest_advance_deduction= node.get('value');
     if ( !update_monthly_salary[interest_advance_deduction] ) {
         update_monthly_salary[interest_advance_deduction] = true;
         var url = 'index.php/person_monthly_salary/';
@@ -283,15 +283,15 @@ function updateInterestAdvanceDeduction(node,person_id,monthly_salary_form_id, m
             url: url,
             data: { 'id':monthly_salary_form_id,
                 'parent':person_id,
-                'leave_days':Total_Interest_Advance_Deduction,
+                'leave_days':Total_interest_advance_deduction,
                 'month':month,
-                'action':'update_other_allowance',
+                'action':'update_interest_advance_deduction',
                 'submit_type':'save'
             },
             onRequest: function() { node.set('value','Saving Record'); node.setStyle('color','blue');},
             onComplete: function(response) { update_monthly_salary[interest_advance_deduction] = false;
                 if (response.item(1).style.color != "green") {
-                    node.set('value', Total_Interest_Advance_Deduction);
+                    node.set('value', Total_interest_advance_deduction);
                     node.setStyle('color', 'green');
                 } else {
                     node.set('value','');
@@ -322,9 +322,9 @@ function updateServiceTaxDeduction(node,person_id,monthly_salary_form_id, month)
             url: url,
             data: { 'id':monthly_salary_form_id,
                 'parent':person_id,
-                'leave_days':Total_service_tax_deduction,
+                'service_tax_deduction':Total_service_tax_deduction,
                 'month':month,
-                'action':'update_other_allowance',
+                'action':'update_service_tax_deduction',
                 'submit_type':'save'
             },
             onRequest: function() { node.set('value','Saving Record'); node.setStyle('color','blue');},
@@ -361,9 +361,9 @@ function updateComputerAdvanceDeduction(node,person_id,monthly_salary_form_id, m
             url: url,
             data: { 'id':monthly_salary_form_id,
                 'parent':person_id,
-                'leave_days':Total_computer_advance_deduction,
+                'computer_advance_deduction':Total_computer_advance_deduction,
                 'month':month,
-                'action':'update_other_allowance',
+                'action':'update_computer_advance_deduction',
                 'submit_type':'save'
             },
             onRequest: function() { node.set('value','Saving Record'); node.setStyle('color','blue');},
@@ -400,9 +400,9 @@ function updateFestivalAdvanceDeduction(node,person_id,monthly_salary_form_id, m
             url: url,
             data: { 'id':monthly_salary_form_id,
                 'parent':person_id,
-                'leave_days':Total_festival_advance_deduction,
+                'festival_advance_deduction':Total_festival_advance_deduction,
                 'month':month,
-                'action':'update_other_allowance',
+                'action':'update_festival_advance_deduction',
                 'submit_type':'save'
             },
             onRequest: function() { node.set('value','Saving Record'); node.setStyle('color','blue');},
@@ -441,49 +441,48 @@ var isNumeric = function(node, person_id, monthly_salary_form_id, month){
         else if(type == "work_days"){
             updateWorkingDays(node,person_id,monthly_salary_form_id, month);
             return true;
-        }
-        else if(type == "Transport_allowance")
+        }}
+        if(type == "transport_allowance")
         {
             updateTransportAllowance(node,person_id,monthly_salary_form_id,month);
             return true;
         }
-        else if(type=="other_allowance"){
+         if(type=="other_allowance"){
             updateOtherAllowance(node,person_id,monthly_salary_form_id, month);
             return true;
         }
-        else if(type == "house_rent_deduction"){
+        if(type == "house_rent_deduction"){
             updateHouseRentDeduction(node,person_id,monthly_salary_form_id, month);
             return true;
         }
-        else if(type == "interest_advance_deduction"){
+        if(type == "interest_advance_deduction"){
             updateInterestAdvanceDeduction(node,person_id,monthly_salary_form_id, month);
             return true;
         }
-        else if(type=="gpf_advance_deduction")
+        if(type=="gpf_advance_deduction")
         {
             updateGpfAdvanceDeduction(node,person_id,monthly_salary_form_id, month);
             return true;
         }
-        else if(type == "house_building_advance_deduction")
+        if(type == "house_building_advance_deduction")
         {
             updateHouseBuildingAdvanceDeduction(node,person_id,monthly_salary_form_id, month);
             return true;
         }
-        else if(type=="service_tax_deduction")
+        if(type=="service_tax_deduction")
         {
             updateServiceTaxDeduction(node,person_id,monthly_salary_form_id, month);
             return true;
         }
-        else if(type=="computer_advance_deduction")
+        if(type=="computer_advance_deduction")
         {
             updateComputerAdvanceDeduction(node,person_id,monthly_salary_form_id, month);
             return true;
         }
-        else if(type=="festival_advance_deduction"){
+        if(type=="festival_advance_deduction"){
             updateFestivalAdvanceDeduction(node,person_id,monthly_salary_form_id, month);
             return true;
         }
-    }
     else{
         alert("Please Enter the Correct value");
         return false;

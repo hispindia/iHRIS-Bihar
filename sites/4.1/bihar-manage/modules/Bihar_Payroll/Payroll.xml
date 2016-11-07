@@ -9,7 +9,7 @@
     <creator>Intrahealth Informatics</creator>
     <email>hris@capacityplus.org</email>
     <link>https://launchpad.net/indian-ihris</link>
-    <version>4.1.12.31</version>
+    <version>4.1.12.32</version>
     <path name="configs">
       <value>./configs</value>
     </path>
@@ -33,7 +33,7 @@
     </requirement>
     <requirement name="SalarySlipRelationship">
       <atLeast version="4.1" />
-    </requirement>	
+    </requirement>
     <path name="css">
       <value>./css</value>
     </path>
@@ -164,7 +164,7 @@
         <value>true</value>
       </configuration>
     </configurationGroup>
-    <configurationGroup name="page">	  
+    <configurationGroup name="page">
       <configurationGroup name="salarybreakdown">
         <displayName>Person Salary Breakdown Page</displayName>
         <description>The page 'person__position_salarybreakdown' which has the action of: Add/Update Salary Breakdown Information</description>
@@ -330,7 +330,7 @@
             <description>Page Title</description>
             <status>required:true</status>
             <value>Print Salary Slips</value>
-          </configuration>		  
+          </configuration>
           <configuration name="access" values="many">
             <displayName>Page Access</displayName>
             <description>All of the roles that have access to this page</description>
@@ -430,7 +430,7 @@
 
         <configurationGroup name="bankname">
           <version>4.1.12.11</version>
-          <configuration name="class" values="single">			
+          <configuration name="class" values="single">
             <value>I2CE_SimpleList</value>
           </configuration>
           <configuration name="display" values="single" locale="en_US">
@@ -979,7 +979,7 @@
             <displayName>The class this form extends</displayName>
             <value>I2CE_Form</value>
           </configuration>
-          <version>4.1.12.6</version>          
+          <version>4.1.12.6</version>
           <configurationGroup name="fields">
             <displayName>The fields defined for this form</displayName>
             <configurationGroup name="position_type">
@@ -998,7 +998,7 @@
             </configurationGroup>
             <configurationGroup name="net_salary_payable">
               <displayName>The field 'net_salary_payable'</displayName>
-              <version>4.1.12.16</version>          
+              <version>4.1.12.16</version>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
                 <value>INT</value>
@@ -1023,7 +1023,7 @@
                 <value>I2CE_Date::now()</value>
               </configuration>
             </configurationGroup>
-            <version>4.1.12.7</version>          
+            <version>4.1.12.7</version>
             <configurationGroup name="epfaccnum">
               <displayName>The field 'epfaccnum'</displayName>
               <configuration name="formfield">
@@ -1351,7 +1351,7 @@
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
                 <value>default:Working Days</value>
-              </configuration>			  
+              </configuration>
               <configuration name="default_value">
                 <value>0</value>
               </configuration>
@@ -1528,6 +1528,23 @@
                 <value>default:Miscellaneous Recovery</value>
               </configuration>
             </configurationGroup>
+
+            <configurationGroup name="tds">
+              <displayName>The field 'TDS'</displayName>
+              <configuration name="formfield">
+                <displayName>The form field type</displayName>
+                <version>4.1.12.32</version>
+                <value>INT</value>
+              </configuration>
+              <configuration name="default_value">
+                <value>0</value>
+              </configuration>
+              <configuration name="headers" type="delimited" locale="en_US">
+                <displayName>The headers for this field.</displayName>
+                <value>default:TDS*</value>
+              </configuration>
+            </configurationGroup>
+
             <configurationGroup name="month">
               <displayName>The field 'setup_date'</displayName>
               <configuration name="formfield">
