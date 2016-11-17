@@ -9,7 +9,7 @@
     <creator>Intrahealth Informatics</creator>
     <email>hris@capacityplus.org</email>
     <link>https://launchpad.net/indian-ihris</link>
-    <version>4.1.12.32</version>
+    <version>4.1.12.34</version>
     <path name="configs">
       <value>./configs</value>
     </path>
@@ -1023,8 +1023,8 @@
                 <value>I2CE_Date::now()</value>
               </configuration>
             </configurationGroup>
-            <version>4.1.12.7</version>
             <configurationGroup name="epfaccnum">
+              <version>4.1.12.33</version>
               <displayName>The field 'epfaccnum'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1032,10 +1032,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:EPF Account Number</value>
+                <value>default:EPF Account Number*</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="bankaccnum">
+              <version>4.1.12.33</version>
               <displayName>The field 'bankaccnum'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1043,10 +1044,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Bank Account Number</value>
+                <value>default:Bank Account Number*</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="ifsc">
+              <version>4.1.12.33</version>
               <displayName>The field 'ifsc'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1054,11 +1056,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:IFSC Code</value>
+                <value>default:IFSC Code*</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="branch_code">
-              <version>4.1.12.29</version>
+              <version>4.1.12.34</version>
               <displayName>The field 'branch_code'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1066,10 +1068,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Branch Code Number</value>
+                <value>default:Branch Code Number*</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="pannumber">
+              <version>4.1.12.33</version>
               <displayName>The field 'pannumber'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1077,10 +1080,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:PAN Number</value>
+                <value>default:PAN Number*</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="empcode">
+              <version>4.1.12.33</version>
               <displayName>The field 'empcode'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1088,7 +1092,7 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Employee Code</value>
+                <value>default:Employee Code*</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="eepf">
@@ -1103,6 +1107,7 @@
               </configuration>
             </configurationGroup>
             <configurationGroup name="bankname">
+              <version>4.1.12.33</version>
               <displayName>The field 'Bank Name'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1111,10 +1116,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Bank Name</value>
+                <value>default:Bank Name*</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="branch">
+              <version>4.1.12.33</version>
               <displayName>The field 'Branch'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1122,12 +1128,13 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Branch</value>
+                <value>default:Branch*</value>
               </configuration>
             </configurationGroup>
 
             <!-- Deductions for contractual staff -->
             <configurationGroup name="tds">
+              <version>4.1.12.33</version>
               <displayName>The field 'tds'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1135,7 +1142,7 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:TDS*</value>
+                <value>default:TDS</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="epf">
@@ -1238,6 +1245,7 @@
 
             <!-- additions for regular staff -->
             <configurationGroup name="grade_pay">
+              <version>4.1.12.33</version>
               <displayName>The field 'grade_pay'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1245,10 +1253,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Special Pay/ Grade Pay*</value>
+                <value>default:Special Pay/ Grade Pay</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="hra">
+              <version>4.1.12.33</version>
               <displayName>The field 'hra'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1256,10 +1265,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:HRA*</value>
+                <value>default:HRA</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="medical_allowance">
+              <version>4.1.12.33</version>
               <displayName>The field 'medical_allowance'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1267,11 +1277,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Medical Allowance*</value>
+                <value>default:Medical Allowance</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="deputation_allowance">
-
+              <version>4.1.12.33</version>
               <displayName>The field 'deputation_allowance'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1279,11 +1289,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Deputation Allowance*</value>
+                <value>default:Deputation Allowance</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="dearness_allowance">
-              <version>4.1.12.30</version>
+              <version>4.1.12.33</version>
               <displayName>The field 'dearness_allowance'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1291,12 +1301,13 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Dearness Allowance*</value>
+                <value>default:Dearness Allowance</value>
               </configuration>
             </configurationGroup>
             <!-- additions for regular staff -->
             <!-- Deductions for regular staff -->
             <configurationGroup name="gpf">
+              <version>4.1.12.33</version>
               <displayName>The field 'gpf'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1304,10 +1315,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:GPF*</value>
+                <value>default:GPF</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="gi">
+              <version>4.1.12.33</version>
               <displayName>The field 'gi'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1315,10 +1327,11 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:GI*</value>
+                <value>default:GI</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="income_tax">
+              <version>4.1.12.33</version>
               <displayName>The field 'income_tax'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1326,7 +1339,7 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Income Tax*</value>
+                <value>default:Income Tax</value>
               </configuration>
             </configurationGroup>
             <!-- Deductions for regular staff -->
@@ -1541,7 +1554,7 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:TDS*</value>
+                <value>default:TDS</value>
               </configuration>
             </configurationGroup>
 

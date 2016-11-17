@@ -190,24 +190,29 @@ class iHRIS_Module_Payroll extends I2CE_Module  {
 
     public function validate_form_person_position_salarybreakdown($form){
         $float_number = '/\d+\.?d*/';
-        $required_fields = array(
-                "regular" => array('medical_allowance','deputation_allowance','gpf','gi','income_tax','grade_pay','hra',),
+        /**This is for the columns validation on salary breakdown of regular employee and contractual Employees**/
+       /* $required_fields = array(
+                "regular" => array('empcode','epfaccnum','bankaccnum','pannumber','bankname','branch','branch_code','ifsc','medical_allowance','dearness_allowance','deputation_allowance','gpf','gi','income_tax','grade_pay','hra',),
                 "contract" => array('tds')
-                );
-        $contract_fields = array('tds', 'basic_pay');
-        $regular_fields = array('basic_pay','grade_pay','hra', 'medical_allowance','deputation_allowance','gpf','gi','income_tax');
+                );*/
+        $required_fields = array(
+            "regular" => array('empcode','epfaccnum','bankaccnum','pannumber','bankname','branch','branch_code','ifsc',),
+            "contract" => array('empcode','epfaccnum','bankaccnum','pannumber','bankname','branch','branch_code','ifsc',)
+        );
+        $contract_fields = array('empcode','epfaccnum','bankaccnum','pannumber','bankname','branch','branch_code','ifsc',);
+        $regular_fields = array('empcode','epfaccnum','bankaccnum','pannumber','bankname','branch','branch_code','ifsc',);
         $position_type = implode("|",$form->position_type);
-        if( $position_type == $this->contractual_position_type ){
+       if( $position_type == $this->contractual_position_type ){
             foreach($required_fields['contract'] as $field){
                 if( empty($form->$field) ){
                     $form->setInvalidMessage($field,'required');
                 }
             }
-            foreach($contract_fields as $field){
+            /*foreach($contract_fields as $field){
                 if( !I2CE_Validate::checkNumber($form->$field, -1)){
                     $form->setInvalidMessage($field, 'numeric');
                 }
-            }
+            }*/
         }
         elseif( $position_type == $this->regular_position_type ){
             foreach( $required_fields['regular'] as $field ){
@@ -215,15 +220,15 @@ class iHRIS_Module_Payroll extends I2CE_Module  {
                     $form->setInvalidMessage($field, 'required');
                 }
             }
-            foreach($regular_fields as $field){
+            /*foreach($regular_fields as $field){
                 if( !I2CE_Validate::checkNumber($form->$field, -1)){
                     $form->setInvalidMessage($field, 'numeric');
                 }
-            }
+            }*/
         }
 
         $gross_pay = $form->salary + $form->salaryarrear + $form->otherarrear + $form->basic_pay
-            + $form->grade_pay + $form->hra + $form->medical_allowance + $form->deputation_allowance;
+            + $form->grade_pay + $form->hra + $form->medical_allowance + $form->deputation_allowance+$form->dearness_allowance;
         $deductions = $form->tds + $form->epf + $form->gpf + $form->professionaltax + $form->otherdeductions
             + $form->gi + $form->income_tax;
 
