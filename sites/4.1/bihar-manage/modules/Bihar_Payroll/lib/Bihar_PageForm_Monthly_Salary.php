@@ -47,12 +47,12 @@ class Bihar_PageForm_Monthly_Salary extends I2CE_PageForm
         $salarybreakdown = I2CE_FormStorage::listFields(
             'person_position_salarybreakdown',
             array('gpf', 'gi', 'tds', 'income_tax', 'grade_pay', 'hra', 'medical_allowance',
-                'deputation_allowance', 'basic_pay'), false, $where, array('-setup_date'), 1);
+                'deputation_allowance','dearness_allowance', 'basic_pay'), false, $where, array('-setup_date'), 1);
 
         if (count($salarybreakdown) == 1) {
             $data = current($salarybreakdown);
             $deduct = $data['gpf'] + $data['gi'] + $data['tds'] + $data['income_tax'];
-            $add = $data['grade_pay'] + $data['hra'] + $data['medical_allowance'] + $data['deputation_allowance'];
+                $add = $data['grade_pay'] + $data['hra'] + $data['medical_allowance'] + $data['deputation_allowance']+$data['dearness_allowance'];
             $net_value = $add - $deduct;
             return array('basic_pay' => $data['basic_pay'], 'extras' => $net_value);
         } else {
@@ -76,7 +76,7 @@ class Bihar_PageForm_Monthly_Salary extends I2CE_PageForm
         }
     }
 
-    protected function getMonthWorkingDays($month)
+            protected function getMonthWorkingDays($month)
     {
         $where = array(
             'operator' => 'FIELD_LIMIT',
@@ -121,8 +121,8 @@ class Bihar_PageForm_Monthly_Salary extends I2CE_PageForm
                     } else {
                         $this->template->loadRootText('<body><span style="color: red">' . $monthSalaryObj->getField('working_days')->getDBValue() . '</span></body>');
                     }
-                } else
-                    if ($this->request('action') == 'update_leave_days') {
+                }
+                else if ($this->request('action') == 'update_leave_days') {
                         $total_days = $this->request('leave_days');
                         if ($total_days <= 23) {
                             $monthlySalaryObj->getField('leave_days')->setFromDB($this->request('leave_days'));
@@ -180,15 +180,39 @@ class Bihar_PageForm_Monthly_Salary extends I2CE_PageForm
                     $monthlySalaryObj->getField('festival_advance_deduction')->setFromDB($this->request('festival_advance_deduction'));
                     $this->template->loadRootText('<body><span style="color: green">' . $this->request('festival_advance_deduction') . '</span></body>');
                 }
+                if ($this->request('action') == 'update_misc_recoveries_deduction') {
+                    $total_misc_recoveries_deduction = $this->request('misc_recoveries_deduction');
+                    $monthlySalaryObj->getField('misc_recoveries_deduction')->setFromDB($this->request('misc_recoveries_deduction'));
+                    $this->template->loadRootText('<body><span style="color: green">' . $this->request('misc_recoveries_deduction') . '</span></body>');
+                }
+
+               /*code for values frm db*/
+
+                $transportAllowance =$monthlySalaryObj->getField('transport_allowance')->getDBValue();
+                $otherAllowance=$monthlySalaryObj->getField('other_allowance')->getDBValue();
+
+                $houseRentDeduction=$monthlySalaryObj->getField('house_rent_deduction')->getDBValue();
+                $interestAdvanceDeduction=$monthlySalaryObj->getField('interest_advance_deduction')->getDBValue();
+                $gpfAdvanceDeduction=$monthlySalaryObj->getField('gpf_advance_deduction')->getDBValue();
+                $houseBuildingAdvanceDeduction=$monthlySalaryObj->getField('house_building_advance_deduction')->getDBValue();
+                $serviceTaxDeduction=$monthlySalaryObj->getField('service_tax_deduction')->getDBValue();
+                $computerAdvanceDeduction=$monthlySalaryObj->getField('computer_advance_deduction')->getDBValue();
+                $festivalDeduction =$monthlySalaryObj->getField('festival_advance_deduction')->getDBValue();
+                $miscDeduction =$monthlySalaryObj->getField('misc_recoveries_deduction')->getDBValue();
+                $leaveDays =$monthlySalaryObj->getField('leave_days')->getDBValue();
+                $oneDaySalary =$monthlySalaryObj->getField('daily_salary')->getDBValue();
 
 
-                $add_allowance = $total_transport_allowance + $total_other_allowance;
-                $sub_deduction = $total_house_rent_deduction + $total_interest_advance_deduction + $total_gpf_advance_deduction + $total_festival_advance_deduction + $total_computer_advance_deduction + $total_service_tax_deduction + $total_house_building_advance_deduction;
+
+                $add_allowance= $transportAllowance+$otherAllowance;
+                $sub_deduction= $houseRentDeduction+$interestAdvanceDeduction+$gpfAdvanceDeduction+$houseBuildingAdvanceDeduction+$serviceTaxDeduction+$computerAdvanceDeduction+$festivalDeduction+$miscDeduction;
+
+//                $add_allowance = $total_transport_allowance + $total_other_allowance;
+    //                $sub_deduction = $total_house_rent_deduction + $total_interest_advance_deduction + $total_gpf_advance_deduction + $total_festival_advance_deduction + $total_computer_advance_deduction + $total_service_tax_deduction + $total_house_building_advance_deduction;
 
 
                 $monthlySalaryObj->populate();
-
-                $net_salary = $gross_salary - (round($daily_salary * $total_days, 2)) + $breakdown['extras'] + $add_allowance - $sub_deduction;
+                $net_salary = $gross_salary - (round($leaveDays * $oneDaySalary, 2)) + $breakdown['extras'] + $add_allowance - $sub_deduction;
                 $monthlySalaryObj->getField('monthly_net_salary')->setFromDB($net_salary);
                 $monthlySalaryObj->getField('daily_salary')->setFromDB($daily_salary);
             }

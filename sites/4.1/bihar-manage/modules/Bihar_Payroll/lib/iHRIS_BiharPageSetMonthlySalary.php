@@ -64,7 +64,7 @@ class iHRIS_BiharPageSetMonthlySalary extends  I2CE_Page {
  */
     public function getActionHeader(){
             $config = I2CE::getConfig()->modules->CustomReports;
-        return array("Unpaid Leave Days","Transport allowance","Other Allowance","House Rent Deduction","Interest advance","GPF Advance deduction","House Building Advance Deduction","Service Tax Deduction","Computer Advance Deduction","Festival Advance Deduction");
+        return array("Unpaid Leave Days","Transport allowance","Other Allowance","House Rent Deduction","Interest Advance Deduction","GPF Advance deduction","House Building Advance Deduction","Service Tax Deduction","Computer Advance Deduction","Festival Advance Deduction","Miscellaneous Recovery");
 
     }
 
@@ -139,8 +139,14 @@ class iHRIS_BiharPageSetMonthlySalary extends  I2CE_Page {
         $this->template->setDisplayData('festival_advance_deduction', $field_args[4], $festival_advance_deduction_field);
         $festival_advance_deduction_field->setAttribute('onchange',$js_festival_advance_deduction);
 
+        $misc_recoveries_deduction_field = $this->template->createElement( "input",
+            array( "type" => "text", "name" => "misc_recoveries_deduction", "id" => "misc_recoveries_deduction" ) );
+        $js_misc_recoveries_deduction= "isNumeric(this, '".$field_args[0]."', '".$field_args[1]."', '".$field_args[2]."');";
+        $this->template->setDisplayData('misc_recoveries_deduction', $field_args[4], $misc_recoveries_deduction_field);
+        $misc_recoveries_deduction_field->setAttribute('onchange',$js_misc_recoveries_deduction);
+
         //return array($working_days_field, $leave_days_field);
-        return array($leave_days_field,$transport_allowance_field,$other_allowance_field,$house_rent_deduction_field,$interest_advance_deduction_field,$gpf_advance_deduction_field,$house_building_advance_deduction_field,$service_tax_deduction_field,$computer_advance_deduction_field,$festival_advance_deduction_field);
+        return array($leave_days_field,$transport_allowance_field,$other_allowance_field,$house_rent_deduction_field,$interest_advance_deduction_field,$gpf_advance_deduction_field,$house_building_advance_deduction_field,$service_tax_deduction_field,$computer_advance_deduction_field,$festival_advance_deduction_field,$misc_recoveries_deduction_field);
 
     }
 

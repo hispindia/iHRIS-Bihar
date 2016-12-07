@@ -9,7 +9,7 @@
     <creator>Intrahealth Informatics</creator>
     <email>hris@capacityplus.org</email>
     <link>https://launchpad.net/indian-ihris</link>
-    <version>4.1.12.34</version>
+    <version>4.1.12.35</version>
     <path name="configs">
       <value>./configs</value>
     </path>
@@ -1024,7 +1024,7 @@
               </configuration>
             </configurationGroup>
             <configurationGroup name="epfaccnum">
-              <version>4.1.12.33</version>
+              <version>4.1.12.35</version>
               <displayName>The field 'epfaccnum'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1032,7 +1032,7 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:EPF Account Number*</value>
+                <value>default:EPF Account Number</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="bankaccnum">
@@ -1084,7 +1084,7 @@
               </configuration>
             </configurationGroup>
             <configurationGroup name="empcode">
-              <version>4.1.12.33</version>
+              <version>4.1.12.35</version>
               <displayName>The field 'empcode'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1092,7 +1092,7 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Employee Code*</value>
+                <value>default:Employee Code</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="eepf">
@@ -1107,7 +1107,7 @@
               </configuration>
             </configurationGroup>
             <configurationGroup name="bankname">
-              <version>4.1.12.33</version>
+              <version>4.1.12.35</version>
               <displayName>The field 'Bank Name'</displayName>
               <configuration name="formfield">
                 <displayName>The form field type</displayName>
@@ -1116,7 +1116,7 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Bank Name*</value>
+                <value>default:Bank Name</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="branch">
@@ -1444,7 +1444,7 @@
               </configuration>
               <configuration name="headers" type="delimited" locale="en_US">
                 <displayName>The headers for this field.</displayName>
-                <value>default:Interest on Advance Deduction</value>
+                <value>default:Interest Advance Deduction</value>
               </configuration>
             </configurationGroup>
             <configurationGroup name="gpf_advance_deduction">
